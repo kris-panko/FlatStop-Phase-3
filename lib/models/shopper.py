@@ -1,9 +1,11 @@
 from models.__init__ import CURSOR, CONN
 
 class Shopper:
-    def __init__(self, user_name, age):
+    all = {}
+    def __init__(self, user_name, age, id=None):
         self.user_name = user_name
         self.age = age
+        self.id = id
     @property
     def age(self):
         return self._age
@@ -57,3 +59,25 @@ class Shopper:
         CONN.commit()
 
         self.id = CURSOR.lastrowid
+        type(self).all[self.id] = self
+    @classmethod
+    def instance_from_db(cls, row):
+        shopper = cls.all.get(row[0])
+        if shopper:
+            shopper.name = row[1]
+            shopper.age = row[2]
+        else:
+            shopper = cls(row[1], row[2])
+            shopper.id = row[0]
+            cls.all[shopper.id] = shopper
+        return shopper
+        
+    @classmethod
+    def get_shopper_account(cls, user_name):
+        sql = """
+            SELECT *
+            FROM shoppers
+            WHERE user_name IS ?
+        """
+        row = CURSOR.execute(sql, (user_name,)).fetchone()
+        return cls.instance_from_db(row) if row else None

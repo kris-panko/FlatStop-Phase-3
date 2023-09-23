@@ -17,6 +17,14 @@ def create_account():
     else:
         print("Okay maybe next time!")
         exit_program()
+def login():
+    username = input("Please enter your username: ")
+    try:
+        print("Logging in....")
+        shopper = Shopper.get_shopper_account(username)
+        print(f"Hi {shopper.user_name} welcome back! ")
+    except Exception as exc:
+        print("Sorry no such account exists, please try again")
 
 def exit_program():
     print("Goodbye!")
