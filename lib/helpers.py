@@ -227,3 +227,49 @@ def check_credits():
 def exit_program():
     print("Goodbye!")
     exit()
+
+def show_game_display():
+    game_display = '''
+
+    ||-------------------------------------------------------||
+    ||.--.    .-._                                           ||
+    |||==|____| |H|___                                __ ___ ||
+    |||  |====| | |xxx|_                             |G |---|||
+    |||==|    | | |   | \                            |E | C |||
+    |||  |    | | |   |\ \   .--.                    |A | O |||
+    |||  |    | | |   |_\ \_( oo )                   |R | D |||
+    |||==|====| |H|xxx|  \ \ |''|                    |S |---|||
+    ||`--^----'-^-^---'   `-' ""  -------------------^--^---^||
+    ||-------------------------------------------------------||
+    ||-------------------------------------------------------||
+    ||               ___                   .-.__.-----. .---.||
+    ||              |===| .---.   __   .---| |XX|<(*)>|_|^^^|||
+    ||         ,  /(|   |_|III|__|''|__|:x:|=|  |     |=| Q |||
+    ||      _a'{ / (|===|+|   |++|  |==|   | |  |Illum| | R |||
+    ||      '/\\/ _(|===|-|   |  |''|  |:x:|=|  |inati| | Y |||
+    ||_____  -\{___(|   |-|   |  |  |  |   | |  |     | | Z |||
+    ||       _(____)|===|+|[I]|DK|''|==|:x:|=|XX|<(*)>|=|^^^|||
+    ||              `---^-^---^--^--'--^---^-^--^-----^-^---^||
+    ||-------------------------------------------------------||
+    ||_______________________________________________________||
+'''
+    print(game_display)
+
+def browse_store():
+    show_game_display()
+    print("Feel free to browse as long as you want...if you need anything just let us know")
+    Browsing = True
+    while Browsing:
+        prompt3()
+        choice_3 = input("> ")
+        if choice_3 == "1":
+            list_games()
+        if choice_3 == "5":
+            break
+
+def prompt3():
+    print("1. List all available games")
+    print("2. List all games by rating")
+    print("3. Look at game")
+    print("4. Add game to cart")
+    print("5. Go back to main menu")

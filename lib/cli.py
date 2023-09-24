@@ -47,7 +47,7 @@ def main():
             if choice_2 == "5":
                 exit_program()
             elif choice_2 == "1":
-                list_games()
+                browse_store()
             elif choice_2 == "2":
                 buy_games()
             elif choice_2 == "3":
@@ -73,6 +73,13 @@ def prompt2():
     print("4. Chat")
     print("5. Leave Store")
     #PRINT
+def prompt3():
+    print("Feel free to browse as long as you want...if you need anything just let us know")
+    print("1. List all available games")
+    print("2. List all games by rating")
+    print("3. Look at game")
+    print("4. Add game to cart")
+    print("5. Go back to main menu")
 
 # def buy_sell_menu():
 #     print("How can we help you today?")
