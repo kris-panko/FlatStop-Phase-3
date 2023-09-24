@@ -22,7 +22,7 @@ def checkout():
     if choice.lower() == "yes":
         # Delete from database
         for game in shopping_cart:
-            Game.remove_purchases(game.id)
+            Game.remove_game_from_db(game.id)
         shopping_cart.clear()
         print("Thank you for your purchase!\n")
     else:

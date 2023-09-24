@@ -111,7 +111,7 @@ class Game:
         return [cls.db_to_object(row) for row in rows]
     
     @classmethod
-    def remove_purchases(cls, game_id):
+    def remove_game_from_db(cls, game_id):
         sql = """
             DELETE FROM games WHERE id = ?
         """
