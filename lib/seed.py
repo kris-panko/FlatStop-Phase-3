@@ -13,6 +13,7 @@ def fill_database():
     Shopper.create("Store", "password1", 27)
     Game.create("Call of Duty", 30.00, "M")
     Game.create("Zelda", 60.00, "T")
+    Game.create("Zelda", 60.00, "T")
     Game.create("Halo", 70.00, "M")
     Game.create("Gears of War", 85.00, "M")
 

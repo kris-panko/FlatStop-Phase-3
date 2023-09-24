@@ -183,15 +183,18 @@ def add_to_cart(game_id):
             print(f"{game['title']} added to cart.")
 
 def view_cart():
-    total_price = sum(game["price"] for game in shopping_cart)
+    total_price = sum(game.price for game in shopping_cart)
     print("Shopping Cart:")
     for game in shopping_cart:
-        print(f"Title: {game['title']}, Price: ${game['price']}")
+        print(f"Title: {game.name}, Price: ${game.price}")
     print(f"Total Price: ${total_price}")
 
 def buy_games():
     view_cart()
-    checkout()
+    # checkout()
+    leave = input("press 1 to escape all")
+    if leave == "1":
+        exit_program()
 
 def sell_game(game_id):
     for game in games_database:
@@ -264,6 +267,28 @@ def browse_store():
         choice_3 = input("> ")
         if choice_3 == "1":
             list_games()
+        if choice_3 == "4":
+            print("Which game are you grabbing?")
+            selected_game = input("Enter Game name: ")
+            all_games = Game.get_available_game(selected_game)
+            cart_game_ids = [game.id for game in shopping_cart]
+            if len(all_games) == 1:
+                curr_game = all_games[0]
+            else:
+                for game in all_games:
+                    if game.id not in cart_game_ids:
+                        index = all_games.index(game)
+                        curr_game = all_games[index]
+
+            
+            print("These are all the instances in Game.all")
+            print(Game.all)
+            if curr_game.id in cart_game_ids:
+                print("You already placed this in your cart")
+            else:
+                shopping_cart.append(curr_game)
+                print(shopping_cart)
+                print(f"{curr_game} is now in your cart")
         if choice_3 == "5":
             break
 
@@ -273,3 +298,5 @@ def prompt3():
     print("3. Look at game")
     print("4. Add game to cart")
     print("5. Go back to main menu")
+
+
