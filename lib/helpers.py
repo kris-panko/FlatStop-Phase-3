@@ -1,5 +1,23 @@
 # lib/helpers.py
 from models.shopper import Shopper
+import time
+
+
+
+def login_or_create_account():
+    print("Do you have an account?")
+    choice = input("[y/N]> ").lower()
+    if choice == "y":
+        # name = login() - if we want to use name of user
+        login()
+    elif choice == "n":
+        # name = create_account() - if we want to use name of user
+        create_account()
+    else:
+        print("Invalid choice, please enter y for YES or N for no.")
+        login_or_create_account()
+    
+    # return name - if we want to use name of user
 
 def create_account():
     print("Would you like to create an account?")
@@ -13,7 +31,7 @@ def create_account():
             create_account()
 
         age = input("Please enter age: ")
-        print("Password must be 8 characters or longer.")
+        print("Please create your password, must contain at least 5 characters including 1 number.")
         password = input("Please enter a password: ")
 
         try:
@@ -72,6 +90,66 @@ def login_menu():
     else:
         print("Invalid choice, please enter a valid number: 0, 1, 2")
         login_menu()
+
+def show_store():
+
+    figure = '''
+__________________________________________________________________
+           |                       |                              |
+           |    F L A T S T O P    |______________________________|
+|__________|_______________________|_________||_|_|_|_|_|_|_|_|_|_|
+|__||  ||___||  |_|___|___|__|  ||___||  ||__||_|_|_|_|_|_|_|_|_|_|
+||__|  |__|__|  |___|___|___||  |__|__|  |__|||_|_|_|_|_|_|_|_|_|_|
+|__||  ||___||  |_|___|___|__|  ||___||  ||__||_|_|_|_|_|_|_|_|_|_|
+||__|  |__|__| |     || |     | |__|__|  |__|||_|     Games     |_|
+|__||  ||___|| |     || |     | ||___||  ||__||_|.   Consoles   |_|
+||__|  |__|__| |     || |     | |__|__|  |__|||_|*`.            |_|
+|__||  ||___|| |     || |     | ||___||  ||__||_| S `.          |_|
+||__|  |__|__| |     || |     | |__|__|  |__|||_|`. A `.        |_|
+|__||  ||___|| |    [|| |]    | ||___||  ||__||_|  `. L `.      |_|
+||__|  |__|__| |     || |     | |__|__|  |__|||_|    `. E `.    |_|
+|__||  ||___|| |_____|| |     | ||___||  ||__||_|______`__*_`___|_|
+||__|  |__|__|_| ____||_|____ | |__|__|  |__|||_|_|_|_|_|_|_|_|_|_|
+|***|  |LLLLL|_______________|| |LLLLL|  |LLL|  |LLLLL|LLLLL|LLLLL|
+|***|  |LLL|________________| | |LLLLL|  |LLL|  |LLLLL|LLLLL|LLLLL|
+|***|__|L|_________________|__|_|LLLLL|__|LLL|  |LLLLL|LLLLL|LLLLL|
+'''
+
+    print(figure)
+def show_inside():
+    entrance = """
+
+|.'',                                        ,''.|
+|.'.'',                                    ,''.'.|
+|.'.'.'',                                ,''.'.'.|
+|.'.'.'.'',                            ,''.'.'.'.|
+|.'.'.'.'.|                            |.'.'.'.'.|
+|.'.'.'.'.|===;                    ;===|.'.'.'.'.|
+|.'.'.'.'.|:::|',        __      ,'|:::|.'.'.'.'.|
+|.'.'.'.'.|---|'.|, ____|__|    |.'|---|.'.'.'.'.|
+|.'.'.'.'.|:::|'.|'|       |====|.'|:::|.'.'.'.'.|
+|,',',',',|---|',|'|       |    |,'|---|,',',',',|
+|.'.'.'.'.|:::|'.|'|       |    |.'|:::|.'.'.'.'.|
+|.'.'.'.'.|---|','   /%%%\      ','|---|.'.'.'.'.|
+|.'.'.'.'.|===:'    /%%%%%\       ':===|.'.'.'.'.|
+|.'.'.'.'.|%%%%%%%%%%%%%%%%%%%%%%%%%%%%|.'.'.'.'.|
+|.'.'.'.','       /%%%%%%%%%\          ','.'.'.'.|
+|.'.'.','        /%%%%%%%%%%%\           ','.'.'.|
+|.'.','         /%%%%%%%%%%%%%\            ','.'.|
+|.','          /%%%%%%%%%%%%%%%\             ','.|
+|;____________/%%%%%%%%%%%%%%%%%\   ____________;|
+
+"""
+    print("ENTERING STORE...\n\n")
+    time.sleep(2)
+    print(entrance)
+
+
+
+
+
+
+
 
 def exit_program():
     print("Goodbye!")

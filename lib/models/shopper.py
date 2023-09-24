@@ -31,8 +31,12 @@ class Shopper:
         return self._password
     @password.setter
     def password(self, password):
-        if (isinstance(password, str) and len(password) >= 8):
+        numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        if isinstance(password, str) and len(password) >= 5 and True in [type(int(char)) == int for char in password if char in numbers]:
             self._password = password
+        else:
+            print("Invalid Entry, please try again. Passwords must be at least 5 characters long and contain at least 1 number. ")
+
 
     @classmethod
     def create_table(cls):
@@ -60,7 +64,7 @@ class Shopper:
     @classmethod
     def create(cls, user_name, password, age):
         #creates the table the first time, then won't do anything else once created
-        cls.create_table()
+        # cls.create_table()
         shopper = cls(user_name, password, age)
         sql = """
             INSERT INTO shoppers (user_name, password, age)
