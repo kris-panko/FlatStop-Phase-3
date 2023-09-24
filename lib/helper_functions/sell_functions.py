@@ -5,15 +5,15 @@ def sell_game(shopper):
     game_name = input("Hi, what game were you looking to sell today? ")
     game_rating = input("What's the rating of this game?")
     game_price = input("What price did you pay for this game?")
-    Game.create(game_name,int(game_price),game_rating,shopper.id)
+    new_Game = Game.create(game_name,int(game_price),game_rating,shopper.id)
     offer_price = 10.00
     print(f"Ok based, off that information we're willing to give you...{offer_price}")
     print("Are you okay with selling your game for this price? ")
     while True:
         choice = input("[y/N] ")
         if choice == "y":
-            # transfer_ownership()
-            # update_price()
+            store_price = offer_price * 4
+            Game.update_price_and_owner(new_Game.id, store_price)
             print("Here we would transfer ownership")
             break
         elif choice == "N":

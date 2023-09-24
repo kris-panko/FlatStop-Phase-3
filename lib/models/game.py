@@ -117,3 +117,13 @@ class Game:
         """
         CURSOR.execute(sql, (game_id,))
         CONN.commit()
+    @classmethod
+    def update_price_and_owner(cls, game_id, store_price):
+        sql = """
+            UPDATE games
+            SET game_owner_id = 1,
+            price = ?
+            WHERE id = ?
+        """
+        CURSOR.execute(sql, (store_price, game_id))
+        CONN.commit()
