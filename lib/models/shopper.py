@@ -68,7 +68,7 @@ class Shopper:
         CONN.commit()
 
         shopper.id = CURSOR.lastrowid
-        cls.current_user = shopper 
+        # cls.current_user = shopper 
         return shopper
     
     @classmethod

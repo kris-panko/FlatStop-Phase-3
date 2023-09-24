@@ -1,7 +1,8 @@
 from helper_functions.browse_store_functions import *
 from helper_functions.buy_checkout_functions import *
+from helper_functions.sell_functions import *
 
-def main_menu():
+def main_menu(shopper):
     def prompt2():
         print("What can we help you with today?")
         print("1. Browse Store")
@@ -18,7 +19,7 @@ def main_menu():
         elif choice_2 == "2":
             buy_from_store()
         elif choice_2 == "3":
-            sell_game() #PASS IN A GAME ID**
+            sell_game(shopper) #PASS IN A GAME ID**
         elif choice_2 == "4":
             print("Will show chatting prompt and will prompt questions for store attendee?\n")
         elif choice_2 == "5":

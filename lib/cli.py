@@ -22,8 +22,8 @@ def main():
         if choice == "1":
             show_inside()
             greeting()
-            login_or_create_account()
-            main_menu()
+            curr_shopper = login_or_create_account()
+            main_menu(curr_shopper)
         elif choice == "2":
             exit_program()
         else:

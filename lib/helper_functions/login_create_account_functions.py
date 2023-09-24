@@ -8,10 +8,12 @@ def login_or_create_account():
     if choice == "y":
         # name = login() - if we want to use name of user
         print("\nPlease go ahead and login to your account")
-        login()
+        curr_shopper = login()
+        return curr_shopper
     elif choice == "n":
         # name = create_account() - if we want to use name of user
-        create_account()
+        curr_shopper = create_account()
+        return curr_shopper
     else:
         print("Invalid choice, please enter y for YES or N for no.")
         login_or_create_account()
@@ -36,6 +38,7 @@ def create_account():
         try:
             shopper = Shopper.create(username, password, int(age))
             print(f"Hi {shopper.user_name}, your account was created successfully!")
+            return shopper
             # return shopper.user_name - if we want to use shopper name later
         except Exception as exc:
             print("There was an error creating your account. Please try again.")
@@ -63,6 +66,7 @@ def login():
                 shopper = Shopper.find_by_username(username)
                 print("Login was successful!")
                 print(f"Hi {shopper.user_name}, welcome back!\n")
+                return shopper
                 break
                 # return shopper.user_name - if we want to use shopper name later
             else:
