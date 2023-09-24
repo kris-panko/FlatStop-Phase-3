@@ -7,6 +7,6 @@ def fill_database():
     Shopper.drop_table()
     Shopper.create_table()
 
-    Shopper.create("Sergio", 27)
+    Shopper.create("Sergio", "password1", 27,)
 
 fill_database()

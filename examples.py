@@ -1,57 +1,6 @@
-# lib/helpers.py
-from models.shopper import Shopper
-import time
 
 
-
-def login_or_create_account():
-    print("Do you have an account?\n")
-    choice = input("[y/N] ")
-    if choice == "y":
-        print("Please go ahead and login to your account\n")
-        login()
-    elif choice == "N":
-        create_account()
-    else:
-        print("Invalid choice")
-
-def create_account():
-    print("Would you like to create an account?")
-    choice = input("[y/N]> ")
-    if choice == "y":
-        username = input("Please create a username: ")
-        password =  input("Please create your password, must contain at least 5 characters including 1 number")
-        age = input("Please enter age: ")
-
-        try:
-            shopper = Shopper.create(username, password, int(age))
-            print(f"Hi {shopper.user_name}, your account was created successfully!")
-        except Exception as exc:
-            print("Sorry there was an error creating your account. Please try again later: ", exc)
-
-    else:
-        print("Okay maybe next time!")
-        exit_program()
-
-def login():
-    username = input("Enter your username: ")
-    password = input("Enter your password: ")
-    try:
-        print("\nLogging in....\n")
-        time.sleep(2)
-        shopper = Shopper.get_shopper_account(username, password)
-        print("Login was successful!")
-        print(f"Hi {shopper.user_name} welcome back!\n")
-    except Exception as exc:
-        print("Invalid username or password, please try again")
-
-def exit_program():
-    print("Goodbye!")
-    exit()
-
-def show_store():
-
-    figure = '''
+figure = '''
 __________________________________________________________________
            |                       |                              |
            |    F L A T S T O P    |______________________________|
@@ -73,10 +22,7 @@ __________________________________________________________________
 |***|__|L|_________________|__|_|LLLLL|__|LLL|  |LLLLL|LLLLL|LLLLL|
 '''
 
-    print(figure)
-
-def show_inside():
-    entrance = """
+entrance = """"
 
 |.'',                                        ,''.|
 |.'.'',                                    ,''.'.|
@@ -98,7 +44,28 @@ def show_inside():
 |.','          /%%%%%%%%%%%%%%%\             ','.|
 |;____________/%%%%%%%%%%%%%%%%%\   ____________;|
 
+
 """
-    print("ENTERING STORE...\n\n")
-    time.sleep(2)
-    print(entrance)
+
+other = """
+
+  |_|_|_|_|_|_|_|_|_|_|
+  |_|_|_|_|_|_|_|_|_|_|
+  |_|_|_|_|_|_|_|_|_|_|
+  |_|_|_|_|_|_|_|_|_|_|
+  |_|_|_|_|_|_|_|_|_|_|
+  |_|     Games     |_|    
+  |_|.   Consoles   |_|
+  |_|*`.            |_|
+  |_| S `.          |_|
+  |_|`. A `.        |_|
+  |_|  `. L `.      |_|
+  |_|    `. E `.    |_|
+  |_|______`__*_`___|_|
+  |_|_|_|_|_|_|_|_|_|_|
+  |_|_|_|_|_|_|_|_|_|_|
+
+
+"""
+print(figure)
+print(entrance)
