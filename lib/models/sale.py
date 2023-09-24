@@ -1,3 +1,6 @@
+from game import Game
+from console import Console
+
 class Sale:
     def __init__(self, sale_amount, console = None, game = None):
             self.sale_amount = sale_amount

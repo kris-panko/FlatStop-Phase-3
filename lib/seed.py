@@ -10,15 +10,11 @@ def fill_database():
     Game.drop_table()
     Game.create_table()
 
-
-    Shopper.create("Sergio", "password1", 27,)
-    Game.create("Call of Duty", 20.00, "M")
-    Game.create("Call of Duty", 20.00, "M")
-    Game.create("Call of Duty", 20.00, "M")
-    Game.create("Call of Duty", 20.00, "M")
-    Game.create("Call of Duty", 20.00, "M")
-    Game.create("Elden Ring", 60.00, "M")
-    Game.create("Elden Ring", 60.00, "M")
-    Game.create("Ratchet and Clank", 30.00, "T")
+    Shopper.create("Store", "password1", 27)
+    Game.create("Call of Duty", 30.00, "M")
+    Game.create("Zelda", 60.00, "T")
+    Game.create("Zelda", 60.00, "T")
+    Game.create("Halo", 70.00, "M")
+    Game.create("Gears of War", 85.00, "M")
 
 fill_database()

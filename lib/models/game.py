@@ -4,11 +4,15 @@ class Game:
     all = {}
     RATINGS = ["E", "T", "M"]
 
-    def __init__(self, name, price, rating):
+    def __init__(self, name, price, rating, id=None):
         self.name = name
         self.price = price
         self.rating = rating
+        self.id = id
         # Game.all.append(self)
+    def __repr__(self):
+        return f"<{self.id}: {self.name}, price: {self.price}, rating: {self.rating}>"
+    
     @property
     def name(self):
         return self._name
@@ -88,7 +92,7 @@ class Game:
         else:
             game = cls(row[1], row[2], row[3])
             game.id = row[0]
-            game.all[game.id] = game
+            Game.all[game.id] = game
         return game
         
     @classmethod
@@ -98,5 +102,17 @@ class Game:
             FROM games
             WHERE name IS ? AND game_owner_id IS ?
         """
-        row = CURSOR.execute(sql, (name, id)).fetchone()
-        return cls.instance_from_db(row) if row else None
+        rows = CURSOR.execute(sql, (name, id)).fetchall()
+        # row = CURSOR.execute(sql, (name, id)).fetchall()
+        return [cls.instance_from_db(row) for row in rows] 
+        # return cls.instance_from_db(row) if row else None
+    
+    @classmethod
+    def get_all_available_games(cls, id=1):
+        sql = """
+            SELECT *
+            FROM games
+            WHERE game_owner_id IS ?
+        """
+        rows = CURSOR.execute(sql, (id,)).fetchall()
+        return [cls.instance_from_db(row) for row in rows]
