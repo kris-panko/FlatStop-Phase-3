@@ -9,6 +9,7 @@ def login_or_create_account():
     choice = input("[y/N]> ").lower()
     if choice == "y":
         # name = login() - if we want to use name of user
+        print("\nPlease go ahead and login to your account")
         login()
     elif choice == "n":
         # name = create_account() - if we want to use name of user
@@ -58,10 +59,12 @@ def login():
         while login_attempts < max_attempts:
             password = input("Enter password: ")
             if shopper.password == password:
-                print("Logging in....")
+                print("\nLogging in....\n")
+                time.sleep(2)
                 #changed shopper function name here
                 shopper = Shopper.find_by_username(username)
-                print(f"Hi {shopper.user_name}, welcome back! ")
+                print("Login was successful!")
+                print(f"Hi {shopper.user_name}, welcome back!\n")
                 break
                 # return shopper.user_name - if we want to use shopper name later
             else:
