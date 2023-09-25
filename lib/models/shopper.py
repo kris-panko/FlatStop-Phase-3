@@ -156,4 +156,11 @@ class Shopper:
     """
         CURSOR.execute(sql, (1, shopper_id))
         CONN.commit()
-    
+    @classmethod
+    def check_membership(cls, shopper_id):
+        sql = """
+            SELECT member
+            FROM shoppers
+            WHERE id = ?     
+        """
+        return CURSOR.execute(sql, (shopper_id,)).fetchone()[0]

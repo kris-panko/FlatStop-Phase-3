@@ -1,5 +1,5 @@
 from models.shopper import Shopper
-from helper_functions.helpers import exit_program
+from helper_functions.helpers import exit_program, become_member
 import time
 
 def login_or_create_account():
@@ -36,6 +36,13 @@ def create_account():
             try:
                 shopper = Shopper.create(username, password, int(age))
                 print(f"Hi {shopper.user_name}, your account was created successfully!")
+                choice = input("Would you like to upgrade your account status to flatstop member?[y/N]> ").lower()
+                if choice == "y":
+                    become_member(shopper.id)
+                elif choice == "n":
+                    print("Ok, maybe next time!")
+                else:
+                    print("Ok, maybe next time!")
                 return shopper
             except Exception as exc:
                 print("There was an error creating your account. Please try again.")

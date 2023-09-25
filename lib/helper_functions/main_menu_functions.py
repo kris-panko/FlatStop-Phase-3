@@ -3,6 +3,7 @@ from helper_functions.buy_checkout_functions import *
 from helper_functions.sell_functions import *
 from helper_functions.view_account import *
 
+
 def main_menu(shopper):
     def prompt2():
         print("\nWhat can we help you with today?")
@@ -14,6 +15,7 @@ def main_menu(shopper):
         print("6. Leave Store")
 
     while True:
+        #Place some figure here...
         prompt2()
         curr_shopper = Shopper.find_by_id(shopper.id)
         choice_2 = input("> ")

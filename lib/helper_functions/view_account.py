@@ -3,14 +3,18 @@ from helper_functions.helpers import *
 
 def get_account(shopper):
     curr_shopper = Shopper.find_by_id(shopper.id)
+    member_status = "Member" if curr_shopper.member == 1 else "Not member"
     print("\nHere are your account details:\n")
     print("Username: " + curr_shopper.user_name)
     print("Password: " + curr_shopper.password)
     print("Age: ", curr_shopper.age)
+    print(f"Membership status: {member_status}")
     while True:
+        curr_shopper = Shopper.find_by_id(shopper.id)
         print("\n1. Would you like to update your account?")
         print("2. Would you like to delete your account?")
-        print("3. Go back to main menu")
+        print("3. Sign up to become a flatstop member and receive discounts")
+        print("4. Go back to main menu")
         choice = input("> ")
         if choice == "1":
             while True:
@@ -75,8 +79,13 @@ def get_account(shopper):
                 print("\nYour account has been successfully deleted")
                 exit_program()
             elif choice == "n":
-                get_account(shopper)
+                break
         elif choice == "3":
+            if (curr_shopper.member) == 1:
+                print("You're already a member. Can't become a double member...or can you? NO.")
+            else:
+                become_member(shopper.id)
+        elif choice == "4":
             break
         else:
             print("Invalid choice, please enter a number 1-3")
