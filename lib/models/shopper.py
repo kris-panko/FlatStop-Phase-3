@@ -108,4 +108,14 @@ class Shopper:
         """
         CURSOR.execute(sql,(shopper_id,))
         CONN.commit()
+    @classmethod
+    def update_username(cls, shopper_id, username):
+        sql = """
+            UPDATE shoppers    
+            SET user_name = ?
+            WHERE id = ?
+    """
+        CURSOR.execute(sql, (username, shopper_id))
+        CONN.commit()
+
             

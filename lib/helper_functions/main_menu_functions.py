@@ -15,6 +15,9 @@ def main_menu(shopper):
 
     while True:
         prompt2()
+        print("Shopper from main menu: PAY ATTENTION HERE")
+        print(shopper)
+        print(shopper.user_name)
         choice_2 = input("> ")
         if choice_2 == "1":
             browse_store()
