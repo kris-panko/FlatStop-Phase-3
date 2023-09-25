@@ -1,22 +1,22 @@
-# lib/cli.py
+#!/usr/bin/env python3 
 
-from helpers import (
-    exit_program,
-    helper_1
-)
+from helpers import *
 
 
 def main():
     while True:
-        menu()
-        choice = input("> ")
-        if choice == "0":
-            exit_program()
-        elif choice == "1":
-            helper_1()
-        else:
-            print("Invalid choice")
+        login_or_create_account()
 
+
+def login_or_create_account():
+    print("Do you have an account?")
+    choice = input("[y/N] ")
+    if choice == "y":
+        login()
+    elif choice == "N":
+        create_account()
+    else:
+        print("Invalid choice")
 
 def menu():
     print("Please select an option:")
