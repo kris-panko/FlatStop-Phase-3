@@ -4,7 +4,6 @@ from helper_functions.figures import show_cashier
 from models.game import Game
 
 def buy_from_store():
-    show_cashier()
     view_cart()
     checkout()
     # leave = input("press 1 to escape all")
@@ -13,6 +12,7 @@ def buy_from_store():
 
 def view_cart():
     total_price = sum(game.price for game in shopping_cart)
+    show_cashier(total_price)
     print("\nShopping Cart:")
     for game in shopping_cart:
         print(f"Title: {game.name}, Price: ${game.price}")
