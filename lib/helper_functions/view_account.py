@@ -4,14 +4,14 @@ from helper_functions.helpers import *
 def get_account(shopper):
     print("PRINTING FROM GET ACCOUNT")
     print(shopper)
-    curr_shopper = Shopper.find_by_username(shopper.user_name)
+    curr_shopper = Shopper.find_by_id(shopper.id)
     print(curr_shopper)
     print("\nHere are your account details:\n")
     print("Username: " + curr_shopper.user_name)
     print("Password: " + curr_shopper.password)
     print("Age: ", curr_shopper.age)
     while True:
-        print(shopper)
+        print(curr_shopper)
         print("\n1. Would you like to update your account?")
         print("2. Would you like to delete your account?")
         print("3. Go back to main menu")
@@ -36,7 +36,17 @@ def get_account(shopper):
                                 print("You're username has been successfully updated.")
                                 break
                 elif choice == "2":
-                    break
+                    while True:
+                        print("Please enter a new password: ")
+                        new_password = input("> ")
+                        if curr_shopper.password == new_password:
+                            print("Your new password is the same as your old password.")
+                        else:
+                            curr_shopper.password = new_password
+                            if curr_shopper.password == new_password:
+                                Shopper.update_password(curr_shopper.id, curr_shopper.password)
+                                print("You're password has been successfully updated.")
+                                break
                 elif choice == "3":
                     break
                 elif choice == "4":

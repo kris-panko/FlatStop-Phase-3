@@ -92,6 +92,15 @@ class Shopper:
         """
         row = CURSOR.execute(sql, (user_name,)).fetchone()
         return cls.db_to_object(row) if row else None
+    @classmethod
+    def find_by_id(cls, user_id):
+        sql = """
+            SELECT *
+            FROM shoppers
+            WHERE id IS ?
+        """
+        row = CURSOR.execute(sql, (user_id,)).fetchone()
+        return cls.db_to_object(row) if row else None
     
     @classmethod
     def does_username_exist(cls, user_name):
@@ -116,6 +125,15 @@ class Shopper:
             WHERE id = ?
     """
         CURSOR.execute(sql, (username, shopper_id))
+        CONN.commit()
+    @classmethod
+    def update_password(cls, shopper_id, password):
+        sql = """
+            UPDATE shoppers    
+            SET password = ?
+            WHERE id = ?
+    """
+        CURSOR.execute(sql, (password, shopper_id))
         CONN.commit()
 
             

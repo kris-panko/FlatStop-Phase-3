@@ -23,7 +23,6 @@ def main():
             show_inside()
             greeting()
             curr_shopper = login_or_create_account()
-            print(curr_shopper.user_name)
             main_menu(curr_shopper)
         elif choice == "2":
             exit_program()
