@@ -1,7 +1,9 @@
 from models.game import Game
+from helper_functions.figures import show_cashier
 
 def sell_game(shopper):
     print(shopper)
+    show_cashier()
     game_name = input("Hi, what game were you looking to sell today? ")
     game_rating = input("What's the rating of this game? ")
     game_price = input("What price did you pay for this game? ")

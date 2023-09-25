@@ -1,8 +1,10 @@
 from helper_functions.helpers import exit_program
 from helper_functions.browse_store_functions import shopping_cart
+from helper_functions.figures import show_cashier
 from models.game import Game
 
 def buy_from_store():
+    show_cashier()
     view_cart()
     checkout()
     # leave = input("press 1 to escape all")

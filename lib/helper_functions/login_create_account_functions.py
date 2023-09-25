@@ -9,7 +9,9 @@ def login_or_create_account():
         if choice == "y":
             # name = login() - if we want to use name of user
             print("\nPlease go ahead and login to your account")
-            return login()
+            curr_shopper = login()
+            if curr_shopper:
+                return curr_shopper
             # return curr_shopper
         elif choice == "n":
             # name = create_account() - if we want to use name of user
@@ -80,7 +82,14 @@ def login():
             
         else:
             print("Sorry no such username exists!")
-            print("Try again:")
+            print("Would you like to go back or try again? ")
+            print("1. Try Again ")
+            print("2. Go Back")
+            choice = input("> ")
+            if choice == "1":
+                pass
+            elif choice == "2":
+                return None
             # print("Would you like to try to login in again or create a new account?")
             # print("0. Exit program")
             # print("1. Login again")
