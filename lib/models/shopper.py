@@ -100,4 +100,12 @@ class Shopper:
             return False
         else:
             return True
+    @classmethod
+    def delete_shopper_from_db(cls, shopper_id):
+        sql = """
+            DELETE FROM shoppers
+            WHERE id = ?
+        """
+        CURSOR.execute(sql,(shopper_id,))
+        CONN.commit()
             

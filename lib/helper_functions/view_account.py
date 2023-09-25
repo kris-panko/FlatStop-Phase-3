@@ -1,4 +1,5 @@
 from models.shopper import Shopper
+from helper_functions.helpers import *
 
 def get_account(shopper):
     curr_shopper = Shopper.find_by_username(shopper.user_name)
@@ -22,6 +23,9 @@ def get_account(shopper):
             choice1 = input("[y/N] ")
             if choice1 == "y":
                 print("\nFine, good riddance...")
+                Shopper.delete_shopper_from_db(curr_shopper.id)
+                print("\nYour account has been successfully deleted")
+                exit_program()
             elif choice == "N":
                 get_account(shopper)
         elif choice == "3":
