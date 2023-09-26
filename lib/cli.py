@@ -33,17 +33,18 @@ def main():
     # print("Welcome to FlatStop!")
     # login_or_create_account()
     # buy_sell_menu()
-    while True:
-        show_store()
-        prompt1()
-        choice = input("> ")
-        if choice == "1":
-            show_inside()
-            greeting()
-            login_or_create_account()
+
+    show_store()
+    prompt1()
+    choice = input("> ")
+    if choice == "1":
+        show_inside()
+        greeting()
+        login_or_create_account()
+        while True:
             prompt2()
             choice_2 = input("> ")
-            if choice_2 == "0":
+            if choice_2 == "5":
                 exit_program()
             elif choice_2 == "1":
                 list_games()
@@ -53,8 +54,8 @@ def main():
                 sell_game() #PASS IN A GAME ID**
             elif choice_2 == "4":
                 print("Will show chatting prompt and will prompt questions for store attendee?")
-        else:
-            exit_program()
+    else:
+        exit_program()
 
 
 def greeting():
@@ -62,15 +63,15 @@ def greeting():
     print("Before getting started, please verify your account with us...\n")
 def prompt1():
     print("Enter FlatStop?")
-    print("0. Don't Enter the store")
     print("1. Enter the store")
+    print("2. Don't Enter the store")
 def prompt2():
-    print("What are you looking to do?")
-    print("0. Leave Store")
-    print("1. List all available items")
+    print("\nWhat are you looking to do?")
+    print("1. Browse Store")
     print("2. Buy Items")
     print("3. Sell Items")
     print("4. Chat")
+    print("5. Leave Store")
     #PRINT
 
 # def buy_sell_menu():

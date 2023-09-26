@@ -3,7 +3,6 @@ from models.shopper import Shopper
 import time
 
 
-
 def login_or_create_account():
     print("Do you have an account?")
     choice = input("[y/N]> ").lower()
@@ -150,6 +149,13 @@ def show_inside():
 
 
 # BUY/SELL + MENU FUNCTIONS
+def prompt2():
+    print("What are you looking to do?")
+    print("1. List all available items")
+    print("2. Buy Items")
+    print("3. Sell Items")
+    print("4. Chat")
+    print("5. Leave Store")
 
 games_database = [
     {"id": 1, "title": "Game 1", "price": 19.99},
@@ -163,7 +169,7 @@ shopping_cart = []
 my_games = []
 
 def list_games():
-    print("Available games:")
+    print("\nAvailable games:")
     for game in games_database:
         print(f"ID: {game['id']}, Title: {game['title']}, Price: ${game['price']}")
 
