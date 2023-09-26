@@ -10,10 +10,10 @@ def main():
 
 def login_or_create_account():
     print("Do you have an account?")
-    choice = input("[y/N] ")
+    choice = input("[y/N] ").lower()
     if choice == "y":
         login()
-    elif choice == "N":
+    elif choice == "n":
         create_account()
     else:
         print("Invalid choice")

@@ -3,7 +3,7 @@ from models.shopper import Shopper
 
 def create_account():
     print("Would you like to create an account?")
-    choice = input("[y/N]> ")
+    choice = input("[y/N]> ").lower()
     if choice == "y":
         username = input("Please create a username: ")
         age = input("Please enter age: ")
