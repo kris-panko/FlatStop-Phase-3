@@ -59,9 +59,6 @@ def exit_program():
     # Add any necessary exit cleanup here
     exit()
 
-def helper_1():
-    print("This is helper function 1.")
-
 def list_games():
     print("Available games:")
     for game in games_database:
