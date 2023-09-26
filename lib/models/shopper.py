@@ -1,7 +1,8 @@
 from models.__init__ import CURSOR, CONN
 
 class Shopper:
-    all = {}
+   #got rid of the all set because single source of truth could be database
+    
     def __init__(self, user_name, age, id=None):
         self.user_name = user_name
         self.age = age
@@ -44,40 +45,61 @@ class Shopper:
         CURSOR.execute(sql)
         CONN.commit()
 
+#consolidates shopper and save actions, since they were doing the same thing,so create:
+#instantiates, adds to database, and then returns it
+#no all necessary becasue database is SSoT
     @classmethod
     def create(cls, user_name, age):
+        #creates the table the first time, then won't do anything else once created
+        cls.create_table()
         shopper = cls(user_name, age)
-        shopper.save()
-        return shopper
-    
-    def save(self):
         sql = """
             INSERT INTO shoppers (user_name, age)
             VALUES (?, ?)
         """
-        CURSOR.execute(sql, (self.user_name, self.age))
+        CURSOR.execute(sql, (shopper.user_name, shopper.age))
         CONN.commit()
 
-        self.id = CURSOR.lastrowid
-        type(self).all[self.id] = self
-    @classmethod
-    def instance_from_db(cls, row):
-        shopper = cls.all.get(row[0])
-        if shopper:
-            shopper.name = row[1]
-            shopper.age = row[2]
-        else:
-            shopper = cls(row[1], row[2])
-            shopper.id = row[0]
-            cls.all[shopper.id] = shopper
+        shopper.id = CURSOR.lastrowid
+        cls.current_user = shopper 
+        #adds a current_user so we can refer back to it later for efficiency
         return shopper
-        
+    
+    #this uses a second source of truth, so we should streamline to use DB
+    #renamed for greater clarity about what it's doing
     @classmethod
-    def get_shopper_account(cls, user_name):
+    def db_to_object(cls, row):
+        #destructured tuple-rows into variables
+        #id, user_name, age
+        #for this row, make a shopper out of it
+        id, user_name, age = row
+        return cls(user_name, age, id)
+
+        # shopper = cls.all.get(row[0])
+        # if shopper:
+        #     shopper.name = row[1]
+        #     shopper.age = row[2]
+        # else:
+        #     shopper = cls(row[1], row[2])
+        #     shopper.id = row[0]
+        #     cls.all[shopper.id] = shopper
+        # return shopper
+
+
+    @classmethod 
+    def get_all(cls):
+        sql = "SELECT * FROM shoppers"
+        rows = CURSOR.execute(sql).fetchall()
+        #call a list comp on each row to convert it into an object
+        return [cls.db_to_object(row) for row in rows]
+
+    #changed name for clarity
+    @classmethod
+    def find_by_username(cls, user_name):
         sql = """
             SELECT *
             FROM shoppers
             WHERE user_name IS ?
         """
         row = CURSOR.execute(sql, (user_name,)).fetchone()
-        return cls.instance_from_db(row) if row else None
+        return cls.db_to_object(row) if row else None

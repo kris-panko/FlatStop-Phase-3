@@ -21,7 +21,8 @@ def login():
     username = input("Please enter your username: ")
     try:
         print("Logging in....")
-        shopper = Shopper.get_shopper_account(username)
+        #changed shopper function name here
+        shopper = Shopper.find_by_username(username)
         print(f"Hi {shopper.user_name} welcome back! ")
     except Exception as exc:
         print("Sorry no such account exists, please try again")
