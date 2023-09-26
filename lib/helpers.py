@@ -149,9 +149,70 @@ def show_inside():
 
 
 
+# BUY/SELL + MENU FUNCTIONS
 
+games_database = [
+    {"id": 1, "title": "Game 1", "price": 19.99},
+    {"id": 2, "title": "Game 2", "price": 29.99},
+    {"id": 3, "title": "Game 3", "price": 39.99},
+]
+user_credits = 0
 
+shopping_cart = []
 
+my_games = []
+
+def list_games():
+    print("Available games:")
+    for game in games_database:
+        print(f"ID: {game['id']}, Title: {game['title']}, Price: ${game['price']}")
+
+def add_to_cart(game_id):
+    for game in games_database:
+        if game["id"] == game_id:
+            shopping_cart.append(game)
+            print(f"{game['title']} added to cart.")
+
+def view_cart():
+    total_price = sum(game["price"] for game in shopping_cart)
+    print("Shopping Cart:")
+    for game in shopping_cart:
+        print(f"Title: {game['title']}, Price: ${game['price']}")
+    print(f"Total Price: ${total_price}")
+
+def buy_games():
+    view_cart()
+    checkout()
+
+def sell_game(game_id):
+    for game in games_database:
+        if game["game_id"] == game_id:
+            my_games.append(game)
+            print(f"{game['title']} added to your games.")
+            # Add credits to the user when a game is sold
+            global user_credits
+            user_credits += game["price"]
+            #*** THIS IS NOT WORKING, ID ISSUE***
+
+def list_my_games():
+    print("My Games:")
+    for game in my_games:
+        print(f"ID: {game['id']}, Title: {game['title']}, Price: ${game['price']}")
+
+def checkout():
+    total_price = sum(game["price"] for game in shopping_cart)
+    print(f"Total Price: ${total_price}")
+    choice = input("Enter 'yes' to confirm purchase, or 'no' to cancel: ")
+    if choice.lower() == "yes":
+        for game in shopping_cart:
+            my_games.append(game)
+        shopping_cart.clear()
+        print("Thank you for your purchase!")
+    else:
+        print("Purchase canceled.")
+
+def check_credits():
+    print(f"Your current credits: ${user_credits}")
 
 
 def exit_program():

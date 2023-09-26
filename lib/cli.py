@@ -1,8 +1,33 @@
 #!/usr/bin/env python3 
-
+import argparse
 from helpers import *
 
 def main():
+    parser = argparse.ArgumentParser(description="FlatStop")
+    parser.add_argument("--list", action="store_true", help="List available games")
+    parser.add_argument("--add", type=int, help="Add a game to the cart by specifying its ID")
+    parser.add_argument("--cart", action="store_true", help="View shopping cart")
+    parser.add_argument("--buy", action="store_true", help="Buy games in the cart")
+    parser.add_argument("--sell", type=int, help="Sell a game by specifying its ID")
+    parser.add_argument("--mygames", action="store_true", help="List your games")
+    parser.add_argument("--credits", action="store_true", help="Check your credits")
+
+    args = parser.parse_args()
+
+    if args.list:
+        list_games()
+    elif args.add:
+        add_to_cart(args.add)
+    elif args.cart:
+        view_cart()
+    elif args.buy:
+        buy_games()
+    elif args.sell:
+        sell_game(args.sell)
+    elif args.mygames:
+        list_my_games()
+    elif args.credits:
+        check_credits()
     #cur_user = login_or_create_account() - if we want to use name of user
     
     # print("Welcome to FlatStop!")
@@ -21,16 +46,15 @@ def main():
             if choice_2 == "0":
                 exit_program()
             elif choice_2 == "1":
-                print("Wil show next prompt asking what they would like to view")
+                list_games()
             elif choice_2 == "2":
-                print("Will bring them to cashier and allow shopper to buy items in cart?")
+                buy_games()
             elif choice_2 == "3":
-                print("Will bring them cashiet and allow shopper to sell items they own?")
+                sell_game() #PASS IN A GAME ID**
             elif choice_2 == "4":
                 print("Will show chatting prompt and will prompt questions for store attendee?")
         else:
             exit_program()
-
 
 
 def greeting():
@@ -43,11 +67,11 @@ def prompt1():
 def prompt2():
     print("What are you looking to do?")
     print("0. Leave Store")
-    print("1. Browse Items")
+    print("1. List all available items")
     print("2. Buy Items")
     print("3. Sell Items")
     print("4. Chat")
-
+    #PRINT
 
 # def buy_sell_menu():
 #     print("How can we help you today?")
