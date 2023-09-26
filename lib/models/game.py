@@ -9,6 +9,9 @@ class Game:
         self.price = price
         self.rating = rating
         # Game.all.append(self)
+    def __repr__(self):
+        return f"<{self.name}, price: {self.price}, rating: {self.rating}>"
+    
     @property
     def name(self):
         return self._name
@@ -100,3 +103,13 @@ class Game:
         """
         row = CURSOR.execute(sql, (name, id)).fetchone()
         return cls.instance_from_db(row) if row else None
+    
+    @classmethod
+    def get_all_available_games(cls, id=1):
+        sql = """
+            SELECT *
+            FROM games
+            WHERE game_owner_id IS ?
+        """
+        rows = CURSOR.execute(sql, (id,)).fetchall()
+        return [cls.instance_from_db(row) for row in rows]

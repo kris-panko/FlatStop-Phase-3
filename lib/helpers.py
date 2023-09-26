@@ -1,5 +1,6 @@
 # lib/helpers.py
 from models.shopper import Shopper
+from models.game import Game
 import time
 
 
@@ -170,8 +171,10 @@ my_games = []
 
 def list_games():
     print("\nAvailable games:")
-    for game in games_database:
-        print(f"ID: {game['id']}, Title: {game['title']}, Price: ${game['price']}")
+    games = Game.get_all_available_games()
+
+    for game in games:
+        print(game)
 
 def add_to_cart(game_id):
     for game in games_database:
