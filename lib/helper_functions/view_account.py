@@ -3,14 +3,39 @@ from helper_functions.helpers import *
 
 def get_account(shopper):
     curr_shopper = Shopper.find_by_id(shopper.id)
-    member_status = "Member" if curr_shopper.member == 1 else "Not member"
+    # member_status = "Member" if curr_shopper.member == 1 else "Not member"
     print("\nHere are your account details:\n")
-    print("Username: " + curr_shopper.user_name)
-    print("Password: " + curr_shopper.password)
-    print("Age: ", curr_shopper.age)
-    print(f"Membership status: {member_status}")
+    # print(f"""
+    #     ------------------------------------------
+    #     * Username : {curr_shopper.user_name} 
+       
+    #     * Password: {curr_shopper.password} 
+      
+    #     * Age: {curr_shopper.age}
+    
+    #     * Membership Status: {member_status}
+      
+    #     -------------------------------------------            
+    # """)
+    # print("Username: " + curr_shopper.user_name)
+    # print("Password: " + curr_shopper.password)
+    # print("Age: ", curr_shopper.age)
+    # print(f"Membership status: {member_status}")
     while True:
         curr_shopper = Shopper.find_by_id(shopper.id)
+        member_status = "Member" if curr_shopper.member == 1 else "Not member"
+        print(f"""
+        ------------------------------------------
+        * Username : {curr_shopper.user_name} 
+       
+        * Password: {curr_shopper.password} 
+      
+        * Age: {curr_shopper.age}
+    
+        * Membership Status: {member_status}
+      
+        -------------------------------------------            
+        """)
         print("\n1. Would you like to update your account?")
         print("2. Would you like to delete your account?")
         print("3. Sign up to become a flatstop member and receive discounts")

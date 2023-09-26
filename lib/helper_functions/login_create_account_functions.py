@@ -33,7 +33,10 @@ def create_account():
                 password = input("Please enter a password: ")
                 try:
                     shopper = Shopper.create(username, password, int(age))
-                    print(f"\nHi {shopper.user_name}, your account was created successfully!")
+                    print(f"""
+                    \n\nHi {shopper.user_name}, your account was created successfully!\n\n
+----------------------------------------------------------------
+                        """)
                     choice = input("\nWould you like to upgrade your account status to flatstop member?[y/N]> ").lower()
                     if choice == "y":
                         become_member(shopper.id)
@@ -45,8 +48,15 @@ def create_account():
                 except Exception as exc:
                     print("There was an error creating your account. Please try again. \n")
         elif choice == "n":
-            print("Okay maybe next time!")
-            exit_program()
+            print("Are you sure? You'll need an account if you want to use our Store's services...")
+            choice = input("[y/N]> ").lower()
+            if choice == "n":
+                print("\n")
+            elif choice == "y":
+                print("Okay maybe next time!")
+                exit_program()
+            else:
+                print("Mmm...we didn't quite catch that...")
         else:
             print("Invalid input, please enter y or n")
 

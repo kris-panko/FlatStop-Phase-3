@@ -16,5 +16,10 @@ def fill_database():
     Game.create("Zelda", 60.00, "T", store.id)
     Game.create("Halo", 70.00, "M", store.id)
     Game.create("Gears of War", 85.00, "M", store.id)
+    Game.create("Call of Duty", 30.00, "M", store.id)
+    Game.create("Zelda", 60.00, "T", store.id)
+    Game.create("Zelda", 60.00, "T", store.id)
+    Game.create("Halo", 70.00, "M", store.id)
+    Game.create("Gears of War", 85.00, "M", store.id)
 
 fill_database()

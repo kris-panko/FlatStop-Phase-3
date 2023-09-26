@@ -9,8 +9,7 @@ class Game:
         self.id = id
         self.game_owner_id = game_owner_id
     def __repr__(self):
-        return f"<{self.id}: {self.name}, price: {self.price}, rating: {self.rating}>"
-    
+        return f"[{self.id}: {self.name}, price: ${self.price}, rating: {self.rating} ###### ]"
     @property
     def name(self):
         return self._name
@@ -127,3 +126,12 @@ class Game:
         """
         CURSOR.execute(sql, (store_price, game_id))
         CONN.commit()
+    @classmethod
+    def get_games_by_lowest_price(cls, game_owner_id=1):
+        sql = """
+            SELECT * FROM games
+            ORDER by price ASC        
+        """
+        rows = CURSOR.execute(sql)
+        return [cls.db_to_object(row) for row in rows]
+    
