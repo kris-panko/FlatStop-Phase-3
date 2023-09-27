@@ -13,15 +13,15 @@ def main_menu():
     while True:
         prompt2()
         choice_2 = input("> ")
-        if choice_2 == "5":
-            exit_program()
-        elif choice_2 == "1":
+        if choice_2 == "1":
             browse_store()
         elif choice_2 == "2":
             buy_games()
         elif choice_2 == "3":
             sell_game() #PASS IN A GAME ID**
         elif choice_2 == "4":
-            print("Will show chatting prompt and will prompt questions for store attendee?")
+            print("Will show chatting prompt and will prompt questions for store attendee?\n")
+        elif choice_2 == "5":
+            exit_program()
         else:
             print(f"{choice_2} is not a valid input. Please enter a number 1-5.\n")
