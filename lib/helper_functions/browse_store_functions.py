@@ -27,7 +27,7 @@ def browse_store():
                     else:
                         print(f"\nThese are the games we have that are rated {rating}:")
                         for game in games:
-                            print(game[1])
+                            print(game.name)
                         break
         elif choice_3 == "4":
             print("\nWhich game are you grabbing?")
@@ -52,8 +52,6 @@ def browse_store():
                         index = all_games.index(game)
                         curr_game = all_games[index]
    
-                print("These are all the instances in Game.all")
-                print(Game.all)
                 if curr_game.id in cart_game_ids:
                     print("You already placed this in your cart")
                 else:
