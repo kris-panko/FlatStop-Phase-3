@@ -23,3 +23,5 @@ def main_menu():
             sell_game() #PASS IN A GAME ID**
         elif choice_2 == "4":
             print("Will show chatting prompt and will prompt questions for store attendee?")
+        else:
+            print(f"{choice_2} is not a valid input. Please enter a number 1-5.\n")

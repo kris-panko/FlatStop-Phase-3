@@ -27,7 +27,7 @@ def main():
         elif choice == "2":
             exit_program()
         else:
-            print("Input invalid, please try again.\n")
+            print(f"{choice} is not a valid input. Please enter either 1 or 2.\n")
     
 
 if __name__ == "__main__":

@@ -96,23 +96,33 @@ class Game:
         return game
         
     @classmethod
-    def get_available_game(cls, name, id=1):
+    def get_available_game(cls, name, game_owner_id=1):
         sql = """
             SELECT *
             FROM games
             WHERE name IS ? AND game_owner_id IS ?
         """
-        rows = CURSOR.execute(sql, (name, id)).fetchall()
+        rows = CURSOR.execute(sql, (name, game_owner_id)).fetchall()
         # row = CURSOR.execute(sql, (name, id)).fetchall()
         return [cls.instance_from_db(row) for row in rows] 
         # return cls.instance_from_db(row) if row else None
     
     @classmethod
-    def get_all_available_games(cls, id=1):
+    def get_all_available_games(cls, game_owner_id=1):
         sql = """
             SELECT *
             FROM games
             WHERE game_owner_id IS ?
         """
-        rows = CURSOR.execute(sql, (id,)).fetchall()
+        rows = CURSOR.execute(sql, (game_owner_id,)).fetchall()
         return [cls.instance_from_db(row) for row in rows]
+    
+    @classmethod
+    def get_games_by_rating(cls, rating, game_owner_id=1):
+        sql = """
+            SELECT *
+            FROM games
+            WHERE rating IS ? AND game_owner_id IS ?
+        """
+        rows = CURSOR.execute(sql, (rating, game_owner_id)).fetchall()
+        return rows
