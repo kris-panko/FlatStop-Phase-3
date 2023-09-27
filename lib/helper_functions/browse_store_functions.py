@@ -45,7 +45,7 @@ def browse_store():
                     print("You already placed this in your cart")
                 else:
                     shopping_cart.append(curr_game)
-                    print(shopping_cart)
+                    # print(shopping_cart)
                     print(f"{curr_game.name} is now in your cart")
             else:
                 for game in all_games:
@@ -57,7 +57,7 @@ def browse_store():
                     print("You already placed this in your cart")
                 else:
                     shopping_cart.append(curr_game)
-                    print(shopping_cart)
+                    # print(shopping_cart)
                     print(f"{curr_game.name} is now in your cart")
         elif choice_3 == "5":
             break

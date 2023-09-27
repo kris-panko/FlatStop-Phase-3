@@ -16,7 +16,7 @@ def main_menu():
         if choice_2 == "1":
             browse_store()
         elif choice_2 == "2":
-            buy_games()
+            buy_from_store()
         elif choice_2 == "3":
             sell_game() #PASS IN A GAME ID**
         elif choice_2 == "4":

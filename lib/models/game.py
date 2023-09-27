@@ -109,3 +109,11 @@ class Game:
         """
         rows = CURSOR.execute(sql, (rating, game_owner_id)).fetchall()
         return [cls.db_to_object(row) for row in rows]
+    
+    @classmethod
+    def remove_purchases(cls, game_id):
+        sql = """
+            DELETE FROM games WHERE id = ?
+        """
+        CURSOR.execute(sql, (game_id,))
+        CONN.commit()
