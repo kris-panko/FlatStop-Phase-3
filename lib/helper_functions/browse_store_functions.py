@@ -15,19 +15,20 @@ def browse_store():
         elif choice_3 == "2":
             while True:
                 print("\nWhat rated games would you like to search for?")
-                rating = input("Please enter M, T, E: ")
+                rating = input("Please enter M, T, E: ").upper()
                 if rating not in Game.RATINGS:
                     print(f"{rating} is not a vaild rating. Please enter a vaild rating.")
                 else:
                     games = Game.find_by_rating(rating)
-                    
+    
                     if games == []:
                         print(f"Sorry, doesn't seem like we have any {rating} rated games in stock right now.")
                         break
                     else:
                         print(f"\nThese are the games we have that are rated {rating}:")
-                        for game in games:
-                            print(game.name)
+                        game_names = list({game.name for game in games})
+                        for name in game_names:
+                            print(name)
                         break
         elif choice_3 == "4":
             print("\nWhich game are you grabbing?")
