@@ -19,7 +19,7 @@ def browse_store():
                 if rating not in Game.RATINGS:
                     print(f"{rating} is not a vaild rating. Please enter a vaild rating.")
                 else:
-                    games = Game.get_games_by_rating(rating)
+                    games = Game.find_by_rating(rating)
                     
                     if games == []:
                         print(f"Sorry, doesn't seem like we have any {rating} rated games in stock right now.")
@@ -33,7 +33,7 @@ def browse_store():
             print("\nWhich game are you grabbing?")
             selected_game = input("Enter Game name: ")
 
-            all_games = Game.get_available_game(selected_game)
+            all_games = Game.find_by_name(selected_game)
             cart_game_ids = [game.id for game in shopping_cart]
 
             if len(all_games) == 0:
@@ -67,7 +67,7 @@ def browse_store():
 
 def list_games():
     print("\nAvailable games:")
-    games = Game.get_all_available_games()
+    games = Game.get_all()
 
     for game in games:
         print(game)

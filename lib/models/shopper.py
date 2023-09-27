@@ -119,14 +119,18 @@ class Shopper:
     
     @classmethod
     def does_username_exist(cls, user_name):
-        sql = """
-            SELECT * 
-            FROM shoppers
-            WHERE user_name = ?
-        """
-        row = CURSOR.execute(sql, (user_name,)).fetchone()
-
-        if row == None:
+        user = cls.find_by_username(user_name)
+        if user == None:
             return False
         else:
             return True
+        # consolidates code to use function we already wrote
+        # sql = """
+        #     SELECT * 
+        #     FROM shoppers
+        #     WHERE user_name = ?
+        # """
+        # row = CURSOR.execute(sql, (user_name,)).fetchone()
+
+        # if row == None:
+            
