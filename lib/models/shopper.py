@@ -2,11 +2,20 @@ from models.__init__ import CURSOR, CONN
 
 class Shopper:
     
+<<<<<<< HEAD
     def __init__(shopper, user_name, password, age, id=None):
         shopper.user_name = user_name
         shopper.age = age
         shopper.id = id
         shopper.password = password
+=======
+    def __init__(self, user_name, password, age, member=0, id=None):
+        self.user_name = user_name
+        self.age = age
+        self.id = id
+        self.member = member
+        self.password = password
+>>>>>>> main
     @property
     def age(shopper):
         return shopper._age
@@ -44,7 +53,8 @@ class Shopper:
             id INTEGER PRIMARY KEY,
             user_name TEXT,
             password TEXT,
-            age INTEGER);
+            age INTEGER,
+            member INTEGER);
         """
         CURSOR.execute(sql)
         CONN.commit()
@@ -61,10 +71,10 @@ class Shopper:
     def create(cls, user_name, password, age):
         shopper = cls(user_name, password, age)
         sql = """
-            INSERT INTO shoppers (user_name, password, age)
-            VALUES (?, ?, ?)
+            INSERT INTO shoppers (user_name, password, age, member)
+            VALUES (?, ?, ?, ?)
         """
-        CURSOR.execute(sql, (shopper.user_name, shopper.password, shopper.age))
+        CURSOR.execute(sql, (shopper.user_name, shopper.password, shopper.age, shopper.member))
         CONN.commit()
 
         shopper.id = CURSOR.lastrowid
@@ -72,8 +82,8 @@ class Shopper:
     
     @classmethod
     def db_to_object(cls, row):
-        id, user_name, password, age = row
-        return cls(user_name, password, age, id)
+        id, user_name, password, age, member = row
+        return cls(user_name, password, age, member, id,)
 
 
     @classmethod 
@@ -134,5 +144,15 @@ class Shopper:
     """
         CURSOR.execute(sql, (password, shopper_id))
         CONN.commit()
+    @classmethod
+    def update_member_status(cls, shopper_id):
+        sql = """
+            UPDATE shoppers    
+            SET member = ?
+            WHERE id = ?
+    """
+        CURSOR.execute(sql, (1, shopper_id))
+        CONN.commit()
+    
 
             

@@ -1,4 +1,5 @@
 from models.game import Game
+from helper_functions.figures import show_cashier
 import random
 
 def sell_game(shopper):
@@ -9,6 +10,7 @@ def sell_game(shopper):
         if break_out_of_sell_game == True:
             break
         elif break_out_of_sell_game == False:
+                show_cashier()
                 game_name = input("Hi, what game were you looking to sell today? ")
                 while True:
                     game_rating = input("What's the rating of this game? ")
