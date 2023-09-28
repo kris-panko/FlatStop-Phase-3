@@ -38,7 +38,7 @@ def sell_game(shopper):
                             if choice == "y":
                                 print("\nGreat! Please enter a lower price.")
                             elif choice == "n":
-                                print("\nOkay now worries, come back and sell to us again soon!") 
+                                print("\nOkay, no worries, come back and sell to us again soon!") 
                                 break_out_of_sell_game = True
                                 break_out_of_while = True
                                 break

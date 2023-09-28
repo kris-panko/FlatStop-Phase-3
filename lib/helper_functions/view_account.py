@@ -88,5 +88,5 @@ def get_account(shopper):
         elif choice == "4":
             break
         else:
-            print("Invalid choice, please enter a number 1-3")
+            print("Invalid choice, please enter a number 1-4")
 

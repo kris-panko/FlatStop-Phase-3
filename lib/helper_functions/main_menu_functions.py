@@ -10,9 +10,8 @@ def main_menu(shopper):
         print("1. Browse Store")
         print("2. Buy Items")
         print("3. Sell Items")
-        print("4. Chat")
-        print("5. View your account")
-        print("6. Leave Store")
+        print("4. View your account")
+        print("5. Leave Store")
 
     while True:
         #Place some figure here...
@@ -26,10 +25,8 @@ def main_menu(shopper):
         elif choice_2 == "3":
             sell_game(curr_shopper) 
         elif choice_2 == "4":
-            print("Will show chatting prompt and will prompt questions for store attendee?\n")
-        elif choice_2 == "5":
             get_account(curr_shopper)
-        elif choice_2 == "6":
+        elif choice_2 == "5":
             exit_program()
         else:
             print(f"{choice_2} is not a valid input. Please enter a number 1-5.\n")

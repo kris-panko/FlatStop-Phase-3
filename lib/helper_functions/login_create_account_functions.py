@@ -27,26 +27,23 @@ def create_account():
 
             if exists == True:
                 print("This username is already taken, please enter a different one.")
-
-
-            age = input("Please enter age: ")
-            print("Please create your password, must contain at least 5 characters including 1 number.")
-            password = input("Please enter a password: ")
-
-            try:
-                shopper = Shopper.create(username, password, int(age))
-                print(f"Hi {shopper.user_name}, your account was created successfully!")
-                choice = input("Would you like to upgrade your account status to flatstop member?[y/N]> ").lower()
-                if choice == "y":
-                    become_member(shopper.id)
-                elif choice == "n":
-                    print("Ok, maybe next time!")
-                else:
-                    print("Ok, maybe next time!")
-                return shopper
-            except Exception as exc:
-                print("There was an error creating your account. Please try again.")
-                print("Error:", exc)
+            else:
+                age = input("Please enter age: ")
+                print("Please create your password, must contain at least 5 characters including 1 number.")
+                password = input("Please enter a password: ")
+                try:
+                    shopper = Shopper.create(username, password, int(age))
+                    print(f"\nHi {shopper.user_name}, your account was created successfully!")
+                    choice = input("\nWould you like to upgrade your account status to flatstop member?[y/N]> ").lower()
+                    if choice == "y":
+                        become_member(shopper.id)
+                    elif choice == "n":
+                        print("Ok, maybe next time!")
+                    else:
+                        print("Ok, maybe next time!")
+                    return shopper
+                except Exception as exc:
+                    print("There was an error creating your account. Please try again. \n")
         elif choice == "n":
             print("Okay maybe next time!")
             exit_program()
