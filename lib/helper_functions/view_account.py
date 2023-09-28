@@ -68,13 +68,13 @@ def get_account(shopper):
         elif choice == "2":
             print("\nAre you sure you want to delete your account?")
             print("We'd hate to see you go....")
-            choice1 = input("[y/N] ")
+            choice1 = input("[y/N] ").lower()
             if choice1 == "y":
                 print("\nFine, good riddance...")
                 Shopper.delete_shopper_from_db(curr_shopper.id)
                 print("\nYour account has been successfully deleted")
                 exit_program()
-            elif choice == "N":
+            elif choice == "n":
                 get_account(shopper)
         elif choice == "3":
             break
