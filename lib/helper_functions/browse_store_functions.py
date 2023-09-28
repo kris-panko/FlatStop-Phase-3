@@ -30,9 +30,9 @@ def browse_store():
                         for name in game_names:
                             print(name)
                         break
-        elif choice_3 == "4":
+        elif choice_3 == "3":
             print("\nWhich game are you grabbing?")
-            selected_game = input("Enter Game name: ")
+            selected_game = input("Enter Game name: ").title()
 
             all_games = Game.find_by_name(selected_game)
             cart_game_ids = [game.id for game in shopping_cart]
@@ -45,24 +45,22 @@ def browse_store():
                     print("You already placed this in your cart")
                 else:
                     shopping_cart.append(curr_game)
-                    # print(shopping_cart)
                     print(f"{curr_game.name} is now in your cart")
             else:
                 for game in all_games:
                     if game.id not in cart_game_ids:
                         index = all_games.index(game)
                         curr_game = all_games[index]
-   
+
                 if curr_game.id in cart_game_ids:
                     print("You already placed this in your cart")
                 else:
                     shopping_cart.append(curr_game)
-                    # print(shopping_cart)
                     print(f"{curr_game.name} is now in your cart")
-        elif choice_3 == "5":
+        elif choice_3 == "4":
             break
         else:
-            print(f"{choice_3} is not a valid input, please enter a number 1-5.")
+            print(f"{choice_3} is not a valid input, please enter a number 1-4.")
 
 def list_games():
     print("\nAvailable games:")
@@ -76,6 +74,5 @@ def prompt3():
     print("\nWhat would you like to do next?")
     print("1. List all available games")
     print("2. List all games by rating")
-    print("3. Look at game")
-    print("4. Add game to cart")
-    print("5. Go back to main menu")
+    print("3. Add game to cart")
+    print("4. Go back to main menu")

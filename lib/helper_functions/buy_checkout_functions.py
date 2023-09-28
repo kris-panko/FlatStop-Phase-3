@@ -6,9 +6,6 @@ from models.game import Game
 def buy_from_store():
     view_cart()
     checkout()
-    # leave = input("press 1 to escape all")
-    # if leave == "1":
-    #     exit_program()
 
 def view_cart():
     total_price = sum(game.price for game in shopping_cart)
@@ -18,11 +15,10 @@ def view_cart():
         print(f"Title: {game.name}, Price: ${game.price}")
     print(f"Total Price: ${total_price}")
 
-# need to update this checkout function
+
 def checkout():
     choice = input("\nEnter 'yes' to confirm purchase, or 'no' to cancel: ")
     if choice.lower() == "yes":
-        # Delete from database
         for game in shopping_cart:
             Game.remove_game_from_db(game.id)
         shopping_cart.clear()

@@ -157,5 +157,3 @@ class Shopper:
         CURSOR.execute(sql, (1, shopper_id))
         CONN.commit()
     
-
-            

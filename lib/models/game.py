@@ -64,7 +64,7 @@ class Game:
 
     @classmethod
     def create(cls, name, price, rating, game_owner_id=None):
-        game = cls(name, price, rating, None, game_owner_id)
+        game = cls(name.title(), price, rating, None, game_owner_id)
         sql = """
             INSERT INTO games (name, price, rating, game_owner_id)
             VALUES (?, ?, ?, ?)
@@ -79,7 +79,7 @@ class Game:
     def db_to_object(cls, row):
         id, name, price, rating, game_owner_id = row
         return cls(name, price, rating, id, game_owner_id)
-     
+
     @classmethod
     def find_by_name(cls, name, game_owner_id=1):
         sql = """

@@ -2,16 +2,12 @@ from models.shopper import Shopper
 from helper_functions.helpers import *
 
 def get_account(shopper):
-    print("PRINTING FROM GET ACCOUNT")
-    print(shopper)
     curr_shopper = Shopper.find_by_id(shopper.id)
-    print(curr_shopper)
     print("\nHere are your account details:\n")
     print("Username: " + curr_shopper.user_name)
     print("Password: " + curr_shopper.password)
     print("Age: ", curr_shopper.age)
     while True:
-        print(curr_shopper)
         print("\n1. Would you like to update your account?")
         print("2. Would you like to delete your account?")
         print("3. Go back to main menu")
@@ -85,5 +81,3 @@ def get_account(shopper):
         else:
             print("Invalid choice, please enter a number 1-3")
 
-
-            

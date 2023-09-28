@@ -29,15 +29,15 @@ def sell_game(shopper):
                         try:
                             float(game_price)
                         except:
-                            print(f"\n{game_price} is not a vaild number. Please enter a vaild number for the price.")
+                            print(f"\n{game_price} is not a valid number. Please enter a valid number for the price.")
                             continue
                         if float(game_price) > 150:
                             print("\nSorry that game is too expensive for us.")
                             print("Are you willing to give us a lower original price?")
-                            choice = input("[y/N]> ")
+                            choice = input("[y/N]> ").lower()
                             if choice == "y":
                                 print("\nGreat! Please enter a lower price.")
-                            elif choice == "N":
+                            elif choice == "n":
                                 print("\nOkay now worries, come back and sell to us again soon!") 
                                 break_out_of_sell_game = True
                                 break_out_of_while = True
@@ -55,17 +55,16 @@ def sell_game(shopper):
                     offer_price = float(game_price) * .6
                     print(f"\nOk, based off that information we're willing to give you... ${round(offer_price, 2)}0 for the game.")
                     print("Are you okay with selling your game for this price? ")
-                    choice = input("[y/N]> ")
+                    choice = input("[y/N]> ").lower()
                     while True:
                         if choice == "y":
-                            # float(offer_price)
                             store_price = round(offer_price * 1.75, 2)
                             Game.update_price_and_owner(new_Game.id, store_price)
                             print("\nThank you for the sale!")
                             print("Pleasure doing business with you....sucker")
                             break_out_of_sell_game = True
                             break                        
-                        elif choice == "N":
+                        elif choice == "n":
                             print("\nHmmm..... okay then....")
                             count = 0
                             max_count = random.randint(1,3)
@@ -73,7 +72,7 @@ def sell_game(shopper):
                             while count < max_count:
                                 cur_haggle_price *= 1.2
                                 print(f"\nAre you willing to sell for ${round(cur_haggle_price,2)}?")
-                                choice = input("[y/N]> ")
+                                choice = input("[y/N]> ").lower()
                                 
                                 if choice == "y":
                                     store_price = round(offer_price * 1.75, 2)
@@ -82,7 +81,7 @@ def sell_game(shopper):
                                     print("Pleasure doing business with you....sucker")
                                     break_out_of_sell_game = True
                                     break
-                                elif choice == "N":
+                                elif choice == "n":
                                     print("\nHmmm..... okay then....")
                                     count +=1
                                 else:
@@ -96,4 +95,5 @@ def sell_game(shopper):
                                 break_out_of_sell_game = True
                                 break
                         else:
-                            print(f"{choice} is an invalid option. Please enter y for yes or N for no.")
+                            print(f"{choice} is an invalid option. Please try again.")
+                            break
