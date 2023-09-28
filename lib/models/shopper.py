@@ -2,37 +2,37 @@ from models.__init__ import CURSOR, CONN
 
 class Shopper:
     
-    def __init__(self, user_name, password, age, id=None):
-        self.user_name = user_name
-        self.age = age
-        self.id = id
-        self.password = password
+    def __init__(shopper, user_name, password, age, id=None):
+        shopper.user_name = user_name
+        shopper.age = age
+        shopper.id = id
+        shopper.password = password
     @property
-    def age(self):
-        return self._age
+    def age(shopper):
+        return shopper._age
     @age.setter
-    def age(self, age):
+    def age(shopper, age):
         if isinstance(age, int) and age > 12:
-            self._age = age
+            shopper._age = age
         else:
             print("Sorry, age needs to be a valid number and greater than 12")
     @property
-    def user_name(self):
-        return self._user_name
+    def user_name(shopper):
+        return shopper._user_name
     @user_name.setter
-    def user_name(self, user_name):
+    def user_name(shopper, user_name):
         if isinstance(user_name, str) and len(user_name) >= 3:
-            self._user_name = user_name
+            shopper._user_name = user_name
         else:
             print("Please try entering username again: Must be a string and greater than 3 characters long")
     @property
-    def password(self):
-        return self._password
+    def password(shopper):
+        return shopper._password
     @password.setter
-    def password(self, password):
+    def password(shopper, password):
         numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
         if isinstance(password, str) and len(password) >= 5 and True in [type(int(char)) == int for char in password if char in numbers]:
-            self._password = password
+            shopper._password = password
         else:
             print("Invalid Entry, please try again. Passwords must be at least 5 characters long and contain at least 1 number. ")
 
@@ -64,12 +64,11 @@ class Shopper:
             INSERT INTO shoppers (user_name, password, age)
             VALUES (?, ?, ?)
         """
-        CURSOR.execute(sql, (self.user_name, self.age))
+        CURSOR.execute(sql, (shopper.user_name, shopper.password, shopper.age))
         CONN.commit()
 
         shopper.id = CURSOR.lastrowid
-        Shopper.all[shopper.id] = shopper
-  
+        return shopper
     
     @classmethod
     def db_to_object(cls, row):
