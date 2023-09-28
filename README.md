@@ -11,7 +11,6 @@ FlatStop is a CLI application where users can access a store, where they can buy
 - User can choose between buying and selling games.
 - User can view all information associated with the account. From this screen, users can update account fields (username, password, and age) and delete their account.
 - Users will have three attempts to login with a correct password before being kicked out.
-- MEMBERSHIP: Users can become a member of the store which will give them discounts on bought games, and additional money back on sold games.
 
 /BUY/
 
@@ -32,6 +31,7 @@ FlatStop is a CLI application where users can access a store, where they can buy
 - STORE CREDIT: Users can recieve store credit for games sold to the store.
 - CHAT: Users can chat with our CLI cashier!
 - HAGGLE: Users can attempt to bargain for more credits when selling games.
+- MEMBERSHIP: Users can become a member of the store which will give them discounts on bought games, and additional money back on sold games.
 
 ## CRUD Actions
 
@@ -45,16 +45,16 @@ FlatStop is a CLI application where users can access a store, where they can buy
 <!-- UPDATE THESE IMAGES EXCEPT KANBAN-->
 
 ## User Stories Decision Tree:
+
 ![Screenshot_2023-09-22_104331](https://github.com/kris-panko/FlatStop-Phase-3/assets/136921157/9eb0cf9f-0f84-4272-896c-aa727fffbab6)
 
-
 ## Object Relationship
+
 ![Screenshot_2023-09-22_113717](https://github.com/kris-panko/FlatStop-Phase-3/assets/136921157/1bdc9f52-578d-489e-b957-71c84e04175e)
 
 ## Kanban:
+
 <img width="1310" alt="Screenshot 2023-09-28 at 12 01 33 PM" src="https://github.com/kris-panko/FlatStop-Phase-3/assets/32116877/73b9efe6-6f8e-4cf9-ab0d-3b309aa0e2ff">
-
-
 
 ---
 
