@@ -33,7 +33,7 @@ def get_account(shopper):
                             curr_shopper.user_name = new_username
                             if curr_shopper.user_name == new_username:
                                 Shopper.update_username(curr_shopper.id, curr_shopper.user_name)
-                                print("You're username has been successfully updated.")
+                                print("Your username has been successfully updated.")
                                 break
                 elif choice == "2":
                     while True:
@@ -45,14 +45,30 @@ def get_account(shopper):
                             curr_shopper.password = new_password
                             if curr_shopper.password == new_password:
                                 Shopper.update_password(curr_shopper.id, curr_shopper.password)
-                                print("You're password has been successfully updated.")
+                                print("Your password has been successfully updated.")
                                 break
                 elif choice == "3":
+                    while True:
+                        print("Please enter your age: ")
+                        new_age = input("> ")
+                        try:
+                            new_age_int = int(new_age)
+                        except:
+                            print("Please enter a valid numerical age over 12")
+
+                        if "new_age_int" in locals() and curr_shopper.age == new_age_int:
+                            print("Looks like you didn't get any older- weird!")
+                        elif "new_age_int" in locals():
+                            curr_shopper.age = new_age_int
+                            if curr_shopper.age == new_age_int:
+                                Shopper.update_age(curr_shopper.id, curr_shopper.age)
+                                print("Your age has been successfully updated.")
+                                break
                     break
                 elif choice == "4":
                     break
                 else:
-                    print("Invalid input, please enter a number 1-3")
+                    print("Invalid input, please enter a number 1-4")
         elif choice == "2":
             print("\nAre you sure you want to delete your account?")
             print("We'd hate to see you go....")
