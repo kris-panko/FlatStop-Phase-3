@@ -52,8 +52,9 @@ FlatStop is a CLI application where users can access a store, where they can buy
 ![Screenshot_2023-09-22_113717](https://github.com/kris-panko/FlatStop-Phase-3/assets/136921157/1bdc9f52-578d-489e-b957-71c84e04175e)
 
 ## Kanban:
+<img width="1310" alt="Screenshot 2023-09-28 at 12 01 33 PM" src="https://github.com/kris-panko/FlatStop-Phase-3/assets/32116877/73b9efe6-6f8e-4cf9-ab0d-3b309aa0e2ff">
 
-![Screenshot 2023-09-22 at 1 44 12 PM](https://github.com/kris-panko/phase-3-project/assets/136921157/ca44ce0b-efcf-477b-80ae-4a62b77d9501)
+
 
 ---
 
