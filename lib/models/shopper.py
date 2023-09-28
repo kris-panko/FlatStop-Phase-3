@@ -137,6 +137,17 @@ class Shopper:
     """
         CURSOR.execute(sql, (password, shopper_id))
         CONN.commit()
+
+    @classmethod
+    def update_age(cls, shopper_id, age):
+        sql = """
+            UPDATE shoppers    
+            SET age = ?
+            WHERE id = ?
+    """
+        CURSOR.execute(sql, (age, shopper_id))
+        CONN.commit() 
+
     @classmethod
     def update_member_status(cls, shopper_id):
         sql = """

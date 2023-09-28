@@ -28,4 +28,4 @@ def checkout():
         shopping_cart.clear()
         print("Thank you for your purchase!\n")
     else:
-        print("Purchase canceled.\n")
+        print("Purchase cancelled.\n")

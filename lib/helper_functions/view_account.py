@@ -33,7 +33,7 @@ def get_account(shopper):
                             curr_shopper.user_name = new_username
                             if curr_shopper.user_name == new_username:
                                 Shopper.update_username(curr_shopper.id, curr_shopper.user_name)
-                                print("You're username has been successfully updated.")
+                                print("Your username has been successfully updated.")
                                 break
                 elif choice == "2":
                     while True:
@@ -45,9 +45,20 @@ def get_account(shopper):
                             curr_shopper.password = new_password
                             if curr_shopper.password == new_password:
                                 Shopper.update_password(curr_shopper.id, curr_shopper.password)
-                                print("You're password has been successfully updated.")
+                                print("Your password has been successfully updated.")
                                 break
                 elif choice == "3":
+                    while True:
+                        print("Please enter your age: ")
+                        new_age = int(input("> "))
+                        if curr_shopper.age == new_age:
+                            print("Looks like you didn't get any older- weird!")
+                        else:
+                            curr_shopper.age = new_age
+                            if curr_shopper.age == new_age:
+                                Shopper.update_age(curr_shopper.id, curr_shopper.age)
+                                print("Your age has been successfully updated.")
+                                break
                     break
                 elif choice == "4":
                     break
