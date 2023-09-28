@@ -45,12 +45,11 @@ FlatStop is a CLI application where users can access a store, where they can buy
 <!-- UPDATE THESE IMAGES EXCEPT KANBAN-->
 
 ## User Stories Decision Tree:
+![Screenshot_2023-09-22_104331](https://github.com/kris-panko/FlatStop-Phase-3/assets/136921157/9eb0cf9f-0f84-4272-896c-aa727fffbab6)
 
-![Screenshot_2023-09-22_104331](https://github.com/kris-panko/phase-3-project/assets/136921157/22e1741b-00d4-4bea-be7e-d3685782a8f4)
 
 ## Object Relationship
-
-![image](https://github.com/kris-panko/flatStop/assets/106281281/04344984-a17a-4959-8a51-8733c3a88aba)
+![Screenshot_2023-09-22_113717](https://github.com/kris-panko/FlatStop-Phase-3/assets/136921157/1bdc9f52-578d-489e-b957-71c84e04175e)
 
 ## Kanban:
 
