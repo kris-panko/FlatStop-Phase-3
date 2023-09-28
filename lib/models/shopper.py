@@ -2,20 +2,12 @@ from models.__init__ import CURSOR, CONN
 
 class Shopper:
     
-<<<<<<< HEAD
-    def __init__(shopper, user_name, password, age, id=None):
-        shopper.user_name = user_name
-        shopper.age = age
-        shopper.id = id
-        shopper.password = password
-=======
     def __init__(self, user_name, password, age, member=0, id=None):
         self.user_name = user_name
         self.age = age
         self.id = id
         self.member = member
         self.password = password
->>>>>>> main
     @property
     def age(shopper):
         return shopper._age
