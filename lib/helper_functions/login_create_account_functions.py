@@ -16,8 +16,8 @@ def login_or_create_account():
             return create_account()
             # return curr_shopper
         else:
-            print("Invalid choice, please enter y for YES or N for no.")
-            login_or_create_account()
+            print(f"\n{choice} is not a vaild option, please enter y for YES or N for no.")
+            # login_or_create_account()
     
     # return name - if we want to use name of user
 
