@@ -61,7 +61,7 @@ def sell_game(shopper):
                             store_price = round(offer_price * 1.75, 2)
                             Game.update_price_and_owner(new_Game.id, store_price)
                             print("\nThank you for the sale!")
-                            print("Pleasure doing business with you....sucker")
+                            print("Pleasure doing business with you....we appreciate your money!")
                             break_out_of_sell_game = True
                             break                        
                         elif choice == "n":
@@ -78,7 +78,7 @@ def sell_game(shopper):
                                     store_price = round(offer_price * 1.75, 2)
                                     Game.update_price_and_owner(new_Game.id, store_price)
                                     print("\nThank you for the sale!")
-                                    print("Pleasure doing business with you....sucker")
+                                    print("Pleasure doing business with you....we appreciate your money!")
                                     break_out_of_sell_game = True
                                     break
                                 elif choice == "n":
