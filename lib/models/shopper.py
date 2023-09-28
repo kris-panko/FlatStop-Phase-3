@@ -1,7 +1,7 @@
 from models.__init__ import CURSOR, CONN
 
 class Shopper:
-    all = {}
+    
     def __init__(self, user_name, password, age, id=None):
         self.user_name = user_name
         self.age = age
@@ -30,8 +30,12 @@ class Shopper:
         return self._password
     @password.setter
     def password(self, password):
-        if (isinstance(password, str) and len(password) >= 8):
+        numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        if isinstance(password, str) and len(password) >= 5 and True in [type(int(char)) == int for char in password if char in numbers]:
             self._password = password
+        else:
+            print("Invalid Entry, please try again. Passwords must be at least 5 characters long and contain at least 1 number. ")
+
 
     @classmethod
     def create_table(cls):
@@ -56,52 +60,80 @@ class Shopper:
     @classmethod
     def create(cls, user_name, password, age):
         shopper = cls(user_name, password, age)
-        shopper.save()
-        return shopper
-    
-    def save(self):
         sql = """
             INSERT INTO shoppers (user_name, password, age)
             VALUES (?, ?, ?)
         """
-        CURSOR.execute(sql, (self.user_name, self.password, self.age))
+        CURSOR.execute(sql, (self.user_name, self.age))
         CONN.commit()
 
-        self.id = CURSOR.lastrowid
-        type(self).all[self.id] = self
+        shopper.id = CURSOR.lastrowid
+        Shopper.all[shopper.id] = shopper
+  
+    
     @classmethod
-    def instance_from_db(cls, row):
-        shopper = cls.all.get(row[0])
-        if shopper:
-            shopper.user_name = row[1]
-            shopper.password = row[2]
-            shopper.age = row[3]
-        else:
-            shopper = cls(row[1], row[2], row[3])
-            shopper.id = row[0]
-            cls.all[shopper.id] = shopper
-        return shopper
-        
+    def db_to_object(cls, row):
+        id, user_name, password, age = row
+        return cls(user_name, password, age, id)
+
+
+    @classmethod 
+    def get_all(cls):
+        sql = "SELECT * FROM shoppers"
+        rows = CURSOR.execute(sql).fetchall()
+        return [cls.db_to_object(row) for row in rows]
+
     @classmethod
-    def get_shopper_account(cls, user_name):
+    def find_by_username(cls, user_name):
         sql = """
             SELECT *
             FROM shoppers
             WHERE user_name IS ?
         """
         row = CURSOR.execute(sql, (user_name,)).fetchone()
-        return cls.instance_from_db(row) if row else None
+        return cls.db_to_object(row) if row else None
+    @classmethod
+    def find_by_id(cls, user_id):
+        sql = """
+            SELECT *
+            FROM shoppers
+            WHERE id IS ?
+        """
+        row = CURSOR.execute(sql, (user_id,)).fetchone()
+        return cls.db_to_object(row) if row else None
     
     @classmethod
     def does_username_exist(cls, user_name):
-        sql = """
-            SELECT * 
-            FROM shoppers
-            WHERE user_name = ?
-        """
-        row = CURSOR.execute(sql, (user_name,)).fetchone()
-
-        if row == None:
+        user = cls.find_by_username(user_name)
+        if user == None:
             return False
         else:
             return True
+    @classmethod
+    def delete_shopper_from_db(cls, shopper_id):
+        sql = """
+            DELETE FROM shoppers
+            WHERE id = ?
+        """
+        CURSOR.execute(sql,(shopper_id,))
+        CONN.commit()
+    @classmethod
+    def update_username(cls, shopper_id, username):
+        sql = """
+            UPDATE shoppers    
+            SET user_name = ?
+            WHERE id = ?
+    """
+        CURSOR.execute(sql, (username, shopper_id))
+        CONN.commit()
+    @classmethod
+    def update_password(cls, shopper_id, password):
+        sql = """
+            UPDATE shoppers    
+            SET password = ?
+            WHERE id = ?
+    """
+        CURSOR.execute(sql, (password, shopper_id))
+        CONN.commit()
+
+            
