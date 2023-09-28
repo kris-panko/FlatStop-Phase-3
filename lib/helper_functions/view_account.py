@@ -50,12 +50,17 @@ def get_account(shopper):
                 elif choice == "3":
                     while True:
                         print("Please enter your age: ")
-                        new_age = int(input("> "))
-                        if curr_shopper.age == new_age:
+                        new_age = input("> ")
+                        try:
+                            new_age_int = int(new_age)
+                        except:
+                            print("Please enter a valid numerical age over 12")
+
+                        if "new_age_int" in locals() and curr_shopper.age == new_age_int:
                             print("Looks like you didn't get any older- weird!")
-                        else:
-                            curr_shopper.age = new_age
-                            if curr_shopper.age == new_age:
+                        elif "new_age_int" in locals():
+                            curr_shopper.age = new_age_int
+                            if curr_shopper.age == new_age_int:
                                 Shopper.update_age(curr_shopper.id, curr_shopper.age)
                                 print("Your age has been successfully updated.")
                                 break
@@ -63,7 +68,7 @@ def get_account(shopper):
                 elif choice == "4":
                     break
                 else:
-                    print("Invalid input, please enter a number 1-3")
+                    print("Invalid input, please enter a number 1-4")
         elif choice == "2":
             print("\nAre you sure you want to delete your account?")
             print("We'd hate to see you go....")
