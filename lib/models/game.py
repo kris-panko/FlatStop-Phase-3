@@ -9,7 +9,7 @@ class Game:
         self.id = id
         self.game_owner_id = game_owner_id
     def __repr__(self):
-        return f"[{self.id}: {self.name}, price: ${self.price}, rating: {self.rating} ###### ]"
+        return f"[{self.id}: {self.name}, price: ${self.price}, rating: {self.rating} ]"
     @property
     def name(self):
         return self._name
