@@ -15,7 +15,6 @@ def view_cart(curr_shopper):
     total_price = sum(game.price for game in shopping_cart)
     show_cashier(total_price)
     if curr_shopper.member == 1:
-        #discounts price
         print("\nShopping Cart:")
         for game in shopping_cart:
             print(f"Title: {game.name}, Price: ${game.price}")
@@ -24,7 +23,6 @@ def view_cart(curr_shopper):
         total_price = total_price - int(total_price *.4)
         print(f"New Total Price is ${total_price}")
     elif curr_shopper.member == 0:
-        #gives option to discount price
         print("We noticed you're not currently a member, would sign up to become one?")
         print("Members are elligible for discounts on games")
         choice = input("[y/N]> ").lower()
@@ -40,19 +38,13 @@ def view_cart(curr_shopper):
             print(f"But after applying your 40% discount")
             print(f"Your new total is ${total_price}")
         else:
-            # total_price = sum(game.price for game in shopping_cart)
-            # show_cashier(total_price)
             print("\nShopping Cart:")
             for game in shopping_cart:
                 print(f"Title: {game.name}, Price: ${game.price}")
             print(f"Total Price: ${total_price}")
-            # print(f"I do see that you're flatstop store member so you get a 40% discount")
-            # total_price = total_price - int(total_price *.4)
-            # print(f"New Total Price is ${total_price}")
 
 
 def checkout():
-    #MADE CHANGES HERE ADDED UP TO RETURN NONE
     if len(shopping_cart) == 0:
         print("Hey you haven't picked up anything to buy...come back when you're ready to make a purchase.\n")
         time.sleep(5)

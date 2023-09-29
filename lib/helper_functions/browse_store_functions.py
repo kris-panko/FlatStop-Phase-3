@@ -78,9 +78,7 @@ def list_games():
     print("\nAvailable games:")
     games = Game.get_all()
 
-    # for game in games:
-    #     print(game, end=" ")
-    # print("")
+
     for i in range(0, len(games)):
         curr_game = games[i]
         if i in range(5,100,5):
