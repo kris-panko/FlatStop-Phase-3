@@ -2,6 +2,12 @@
 
 FlatStop is a CLI application where users can access a store, where they can buy and sell video games.
 
+
+
+https://github.com/kris-panko/FlatStop-Phase-3/assets/136921157/13b25830-c6b1-486f-8ab6-affd0cf809f5
+
+
+
 ## Functionality:
 
 /LOGIN AND ACCOUNT/
