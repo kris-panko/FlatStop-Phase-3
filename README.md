@@ -35,9 +35,9 @@ https://github.com/kris-panko/FlatStop-Phase-3/assets/136921157/13b25830-c6b1-48
 /STRETCH GOALS/
 
 - STORE CREDIT: Users can recieve store credit for games sold to the store.
-- CHAT: Users can chat with our CLI cashier!
-- HAGGLE: Users can attempt to bargain for more credits when selling games.
-- MEMBERSHIP: Users can become a member of the store which will give them discounts on bought games, and additional money back on sold games.
+- CHAT: Users can chat with our CLI cashier! 
+- HAGGLE: Users can attempt to bargain for more credits when selling games. (This feature is currently live.)
+- MEMBERSHIP: Users can become a member of the store which will give them discounts on bought games, and additional money back on sold games. (This feature is currently live.)
 
 ## CRUD Actions
 
@@ -47,8 +47,6 @@ https://github.com/kris-panko/FlatStop-Phase-3/assets/136921157/13b25830-c6b1-48
 - USER READ: User can view the username, password, and age affiliated with their account.
 - GAME UPDATE/DELETE: Buying an inventory item updates or deletes it from stock and persists (if the inventory is 0, it is deleted from SQL database.)
 - USER UPDATE/DELETE: Users can update information associated with their account and delete their account.
-
-<!-- UPDATE THESE IMAGES EXCEPT KANBAN-->
 
 ## User Stories Decision Tree:
 
